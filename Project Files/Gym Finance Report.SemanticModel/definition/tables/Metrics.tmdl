@@ -222,6 +222,9 @@ table Metrics
 		displayFolder: General Metrics
 		lineageTag: f251cd91-4e6f-4f6b-b76c-1bdecd00c423
 
+	measure Play_measure = "delete me afterwards. This is just an experiment for Version control and Deployment pipeline"
+		lineageTag: 98c65311-39a3-4e6a-8424-e65e5346f7b9
+
 	partition Metrics = m
 		mode: import
 		source =
