@@ -1,10 +1,10 @@
-table dictionary
-	lineageTag: 1833c6ce-a8ec-4af1-8446-710db647a114
+table Source_File
+	lineageTag: f1307e19-64b2-467b-9c1e-74a096e9f478
 
 	column Year
 		dataType: int64
 		formatString: 0
-		lineageTag: a5ea3348-c036-4b3f-8c85-f52ecb5e3051
+		lineageTag: 4c3a113c-5b02-409e-a68d-b17dd9c46654
 		summarizeBy: sum
 		sourceColumn: Year
 
@@ -12,7 +12,7 @@ table dictionary
 
 	column 'Month - name'
 		dataType: string
-		lineageTag: 39982b3d-d0e9-4ce9-ac85-cbabf39612fa
+		lineageTag: 86ec3ef5-eb31-4889-82e0-221cb3aad450
 		summarizeBy: none
 		sourceColumn: Month - name
 
@@ -21,7 +21,7 @@ table dictionary
 	column 'Month -sequence'
 		dataType: int64
 		formatString: 0
-		lineageTag: 278515e6-aba2-4dfb-8fcf-d71083a73ffc
+		lineageTag: ad5e2dd9-878c-42d3-9181-5e2f102ebfd2
 		summarizeBy: sum
 		sourceColumn: Month -sequence
 
@@ -30,7 +30,7 @@ table dictionary
 	column Date
 		dataType: dateTime
 		formatString: Long Date
-		lineageTag: 79d71f6a-f219-4bca-87e8-581d0eba155c
+		lineageTag: 1f1e678b-8cf1-4ec4-bf0b-cc9c6df616d0
 		summarizeBy: none
 		sourceColumn: Date
 
@@ -40,7 +40,7 @@ table dictionary
 
 	column 'Business Line'
 		dataType: string
-		lineageTag: b97be04b-b69a-47f3-96d1-efeaf724cd22
+		lineageTag: 94d41e5a-551c-46b8-842a-52dca1fc70de
 		summarizeBy: none
 		sourceColumn: Business Line
 
@@ -49,7 +49,7 @@ table dictionary
 	column 'Amount, $'
 		dataType: int64
 		formatString: 0
-		lineageTag: 299fe9e3-2613-45ea-ab15-e4a91f31c175
+		lineageTag: 732f98fa-15cf-4a43-b8a8-805049a585fe
 		summarizeBy: sum
 		sourceColumn: Amount, $
 
@@ -57,7 +57,7 @@ table dictionary
 
 	column 'Expense subgroup'
 		dataType: string
-		lineageTag: 2d937657-cab5-4d8e-b712-baecc2395024
+		lineageTag: ac1d526c-4eb7-4619-bdf7-cabdfb198eaa
 		summarizeBy: none
 		sourceColumn: Expense subgroup
 
@@ -65,7 +65,7 @@ table dictionary
 
 	column 'Revenue / Expense Group'
 		dataType: string
-		lineageTag: 6e4f0b71-7279-471b-a6f2-16f24b092fad
+		lineageTag: 3bac95e9-96c3-4fb2-b8f7-306ab3fb50cd
 		summarizeBy: none
 		sourceColumn: Revenue / Expense Group
 
@@ -73,19 +73,21 @@ table dictionary
 
 	column 'Revenue or expense'
 		dataType: string
-		lineageTag: 3a607a4a-cf28-4e21-8232-1fe98b18562f
+		lineageTag: 55b68df8-c5a6-4998-8bfa-d7395aab07b2
 		summarizeBy: none
 		sourceColumn: Revenue or expense
 
 		annotation SummarizationSetBy = Automatic
 
-	partition dictionary = m
+	partition Source_File = m
 		mode: import
 		source =
 				let
-				    Source = Source_File
+				    Source = Excel.Workbook(Web.Contents("https://github.com/Theophine/Gym_Finance_Analysis-Power-BI-/raw/refs/heads/main/Onyx%20Data%20-%20DataDNA%20Dataset%20Challenge%20-%20Business%20Financial%20Dataset%20-%20August%202024.xlsx"), null, true),
+				    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Year", Int64.Type}, {"Month - name", type text}, {"Month -sequence", Int64.Type}, {"Date", type date}, {"Business Line", type text}, {"Amount, $", Int64.Type}, {"Expense subgroup", type text}, {"Revenue / Expense Group", type text}, {"Revenue or expense", type text}})
 				in
-				    Source
+				    #"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 

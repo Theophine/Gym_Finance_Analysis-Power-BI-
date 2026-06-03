@@ -59,10 +59,8 @@ table revenue_expense
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\paddy\Documents\Analytics_files\Powerbi\Zefas BI and Analytics\Finance Analysis\Onyx Data - DataDNA Dataset Challenge - Business Financial Dataset - August 2024.xlsx"), null, true),
-				    revenue_expense_Sheet = Source{[Item="revenue_expense",Kind="Sheet"]}[Data],
-				    #"Promoted Headers" = Table.PromoteHeaders(revenue_expense_Sheet, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Year", Int64.Type}, {"Month - name", type text}, {"Month -sequence", Int64.Type}, {"Date", type date}, {"Business Line", type text}, {"Amount, $", Int64.Type}, {"Expense subgroup", type text}, {"Revenue / Expense Group", type text}, {"Revenue or expense", type text}}),
+				    Source = Source_File,
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Year", Int64.Type}, {"Month - name", type text}, {"Month -sequence", Int64.Type}, {"Date", type date}, {"Business Line", type text}, {"Amount, $", Int64.Type}, {"Expense subgroup", type text}, {"Revenue / Expense Group", type text}, {"Revenue or expense", type text}}),
 				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Year", "Month - name", "Month -sequence"}),
 				    #"Inserted Absolute Value" = Table.AddColumn(#"Removed Columns", "Amount", each Number.Abs([#"Amount, $"]), type number),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Inserted Absolute Value",{{"Amount", Int64.Type}}),
