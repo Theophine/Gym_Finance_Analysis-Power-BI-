@@ -1,0 +1,236 @@
+table Metrics
+	lineageTag: 2fa390a0-df15-46bc-80ca-0cb0eca296c0
+
+	measure TotalAmount = SUM(revenue_expense[Amount])
+		formatString: 0
+		displayFolder: General Metrics
+		lineageTag: 1b723d0a-b5c6-49fd-8b55-a4aeba2b1937
+
+	measure TotalRevenue = CALCULATE([TotalAmount], revenue_expense[Revenue or expense] = "Revenue")
+		formatString: 0.00
+		displayFolder: Revenue
+		lineageTag: 3c5c0a8b-2984-4495-b9fc-0652d3725edf
+
+	measure TotalExpense = CALCULATE([TotalAmount], revenue_expense[Revenue or expense] = "Expense")
+		formatString: 0.00
+		displayFolder: Expense
+		lineageTag: dcd70a54-2901-461a-a282-bb763fa141e4
+
+	measure Revenue_PM = CALCULATE([TotalRevenue], DATEADD('Date'[Date], -1, MONTH))
+		formatString: 0.00
+		displayFolder: Revenue
+		lineageTag: 14bcee69-5a80-4714-87c6-941deccab9d6
+
+	measure Revenue_MoM = ```
+			
+			
+			    var Month_Diff = [TotalRevenue] - [Revenue_PM]
+			    var Result = DIVIDE(Month_Diff, [Revenue_PM])
+			
+			    return 
+			        SWITCH(TRUE(), 
+			            Result = BLANK(),"--", 
+			            FORMAT(Result, "0.00%")
+			)
+			```
+		displayFolder: Revenue
+		lineageTag: 8fc5bec9-9e52-48ca-a1d9-ea391b81863a
+
+	measure Revenue_CF = ```
+			
+			
+			    var Month_Diff = [TotalRevenue] - [Revenue_PM]
+			    var Result = DIVIDE(Month_Diff, [Revenue_PM])
+			
+			    return 
+			        if(Result > 0, "Green", "Red")
+			
+			```
+		displayFolder: Revenue
+		lineageTag: 4845cb5c-6126-4bb7-8dad-9275a7394788
+
+	measure Expense_PM = CALCULATE([TotalExpense], DATEADD('Date'[Date], -1, MONTH))
+		formatString: 0.00
+		displayFolder: Expense
+		lineageTag: 8e97d25a-8896-4bdc-a7bf-96876affb97e
+
+	measure Expense_MoM = ```
+			
+			
+			    var Month_Diff = [TotalExpense] - [Expense_PM]
+			    var Result = DIVIDE(Month_Diff, [Expense_PM])
+			
+			    return 
+			        SWITCH(TRUE(), 
+			            Result = BLANK(),"--", 
+			            FORMAT(Result, "0.00%")
+			) 
+			
+			```
+		displayFolder: Expense
+		lineageTag: 71c6d682-8002-425b-bfc9-2f3604ed179d
+
+	measure Expense_CF = ```
+			
+			
+			    var Month_Diff = [TotalExpense] - [Expense_PM]
+			    var Result = DIVIDE(Month_Diff, [Expense_PM])
+			
+			    return 
+			        if(Result < 0, "Green", "Red")
+			
+			```
+		displayFolder: Expense
+		lineageTag: 6a88c968-2fe8-4a1e-87ec-1ab207033cda
+
+	measure COGS = CALCULATE([TotalAmount], revenue_expense[Revenue / Expense Group] = "COGS")
+		formatString: 0
+		displayFolder: General Metrics
+		lineageTag: 5356084a-1efa-4860-be3e-421aa2ce1067
+
+	measure GrossProfit = [TotalRevenue] - [COGS]
+		formatString: 0.00
+		displayFolder: GrossProfit
+		lineageTag: 0c39837a-bede-4577-8080-7c4fd5914cb6
+
+	measure GrossProfit_Margin = ```
+			
+			    DIVIDE([GrossProfit], [TotalRevenue])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: GrossProfit
+		lineageTag: 798485e4-5f03-46ca-82a5-a93fdf645c8f
+
+	measure GrossProfit_PM = CALCULATE([GrossProfit], DATEADD('Date'[Date], -1, MONTH))
+		formatString: 0.00
+		displayFolder: GrossProfit
+		lineageTag: c6bc8595-b996-4551-86e0-f6a5d06b07b8
+
+	measure GrossProfit_MoM = ```
+			
+			
+			    var Month_Diff = [GrossProfit] - [GrossProfit_PM]
+			    var Result = DIVIDE(Month_Diff, [GrossProfit_PM])
+			
+			    return 
+			        SWITCH(TRUE(), 
+			            Result = BLANK(),"--", 
+			            FORMAT(Result, "0.00%")
+			) 
+			
+			```
+		displayFolder: GrossProfit
+		lineageTag: 4d229250-9ac8-4b40-a3e9-bcdf059d1fe2
+
+	measure GrossProfit_CF = ```
+			
+			
+			    var Month_Diff = [GrossProfit] - [GrossProfit_PM]
+			    var Result = DIVIDE(Month_Diff, [GrossProfit_PM])
+			
+			    return 
+			        if(Result > 0, "Green", "Red")
+			
+			```
+		displayFolder: GrossProfit
+		lineageTag: 5cc5e2f1-c65f-4493-bc04-2eeacdce4544
+
+	measure NetProfit = [TotalRevenue] - [TotalExpense]
+		formatString: 0
+		displayFolder: Net Profit
+		lineageTag: 505a5d09-fbb3-4407-ad25-65eb4c7e605c
+
+	measure NetProfit_Margin = DIVIDE([NetProfit], [TotalRevenue],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Net Profit
+		lineageTag: 7d98c300-4bf7-4bb6-8d5f-b12efd0cd5ef
+
+	measure NetProfit_PM = CALCULATE([NetProfit], DATEADD('Date'[Date], -1, MONTH))
+		formatString: 0
+		displayFolder: Net Profit
+		lineageTag: 0f03680e-6d4f-41ed-a36e-9f7ca3f47116
+
+	measure NetProfit_MoM = ```
+			
+			
+			    var Month_Diff = [NetProfit] - [NetProfit_PM]
+			    var Result = DIVIDE(Month_Diff, [NetProfit_PM])
+			
+			    return 
+			        SWITCH(TRUE(), 
+			            Result = BLANK(),"--", 
+			            FORMAT(Result, "0.00%")
+			) 
+			
+			```
+		displayFolder: Net Profit
+		lineageTag: 922a2a97-1770-4f41-b769-a4f83b820f09
+
+	measure NetProfit_CF = ```
+			
+			
+			    var Month_Diff = [NetProfit] - [NetProfit_PM]
+			    var Result = DIVIDE(Month_Diff, [NetProfit_PM])
+			
+			    return 
+			        if(Result > 0, "Green", "Red")
+			
+			```
+		displayFolder: Net Profit
+		lineageTag: e8cc69e3-685b-4255-8308-02dd4afd48c6
+
+	measure Target_Month_Revenue = DIVIDE(018000000, 12)
+		displayFolder: Revenue
+		lineageTag: dc18ad58-e882-4838-a0c3-1359cfdd67e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Target Expense' = 250000
+		formatString: 0
+		displayFolder: Expense
+		lineageTag: df167d80-2de0-46ed-aa3c-649093a39584
+
+	measure TargetRevenue = 400000
+		formatString: 0
+		displayFolder: Revenue
+		lineageTag: 12f880fc-cbea-4ac6-90ed-0700898c5238
+
+	measure OPEX = CALCULATE([TotalAmount], revenue_expense[Revenue / Expense Group] = "Opex")
+		formatString: 0
+		displayFolder: OPEX
+		lineageTag: 05d840f9-2817-49ea-86ae-6f577338b2c8
+
+	measure EBIT = [GrossProfit] - [OPEX]
+		formatString: 0
+		displayFolder: EBIT
+		lineageTag: aa8c3670-09be-4a4c-91f4-7342d5252ed0
+
+	measure EBIT_Margin = DIVIDE([EBIT], [TotalRevenue], 0)
+		displayFolder: EBIT
+		lineageTag: 9450eb82-74a0-4dc8-9cb4-e4a19d0db0a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure OPEX_Margin = DIVIDE([OPEX], [TotalRevenue], 0)
+		displayFolder: OPEX
+		lineageTag: bc7021a1-7f46-4d44-aebf-bc706cecc165
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Int & Tax' = CALCULATE([TotalAmount], revenue_expense[Revenue / Expense Group] = "Interest and tax")
+		formatString: 0
+		displayFolder: General Metrics
+		lineageTag: f251cd91-4e6f-4f6b-b76c-1bdecd00c423
+
+	partition Metrics = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

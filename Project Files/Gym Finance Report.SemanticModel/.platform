@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Gym Finance Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8b894ee4-9564-4979-90d1-3a6f4920052d"
+  }
+}

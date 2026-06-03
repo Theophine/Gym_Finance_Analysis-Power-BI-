@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "089d46a3dd51e4ea633d",
+  "position": {
+    "x": 209.60111966410076,
+    "y": 420.54583624912527,
+    "z": 23000,
+    "height": 659.706088173548,
+    "width": 1688.9013296011199,
+    "tabOrder": 23000
+  },
+  "visualGroup": {
+    "displayName": "Expense Breakdown",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

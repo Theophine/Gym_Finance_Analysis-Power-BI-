@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "bf40b99eae1a18b8c511",
+  "position": {
+    "x": 0,
+    "y": 358.74037788663395,
+    "z": 2000,
+    "height": 274.09377186843949,
+    "width": 833.03009097270819,
+    "tabOrder": 26000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "N & F support saw strong sales throughout the year, with Q1 leading at 405, 450, while consulting revenue peaked in Q3. ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Sports Equipment had its highest sales in Q4 at 1, 950, 000, with a decline in consulting revenue from Q1 to Q4. ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Similarly, Sportwear showed strong sales in Q1 at1, 351, 500, though it gradually declined across quarters. Both sports Equipment and Sportwear saw moderate other income, with noticeable peaks in Q2 and Q4, respectively. ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "8e16019317ced0084247"
+}

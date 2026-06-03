@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "29f4fd96a5347a12a5bc",
+  "position": {
+    "x": 209.60111966410076,
+    "y": 417.85864240727784,
+    "z": 22000,
+    "height": 652.98810356892932,
+    "width": 1688.9013296011199,
+    "tabOrder": 22000
+  },
+  "visualGroup": {
+    "displayName": "Monthly Breakdown",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

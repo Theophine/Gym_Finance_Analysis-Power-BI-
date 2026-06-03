@@ -1,0 +1,101 @@
+expression Query1 =
+		let
+		    fnDateTable = (FYStartMonth as number) as table =>
+		    let
+		        // --- Validate FYStartMonth (must be 1..12). Default to 1 if invalid ---
+		        _FYStartMonth =
+		            let
+		                m = try Number.RoundDown(FYStartMonth) otherwise 1
+		            in
+		                if m < 1 or m > 12 then 1 else m,
+		
+		        // --- Dynamic start/end dates from fact table ---
+		        StartDate = List.Min(revenue_expense[Date]),
+		        EndDate   = List.Max(revenue_expense[Date]),
+		
+		        // --- Expand to full calendar years (Jan 1 .. Dec 31) ---
+		        MinYear = Date.Year(StartDate),
+		        MaxYear = Date.Year(EndDate),
+		        MinDate = #date(MinYear, 1, 1),
+		        MaxDate = #date(MaxYear, 12, 31),
+		        Duration = Duration.Days(MaxDate - MinDate) + 1,
+		
+		        // --- Generate date list and convert to table ---
+		        Source = List.Dates(MinDate, Duration, #duration(1, 0, 0, 0)),
+		        TableFromList = Table.FromList(Source, Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
+		        ChangedType = Table.TransformColumnTypes(TableFromList, {{"Date", type date}}),
+		
+		        // --- Core date parts (keep numeric as numbers) ---
+		        AddYearNumber   = Table.AddColumn(ChangedType, "YearNumber", each Date.Year([Date]), Int64.Type),
+		        AddYearText     = Table.AddColumn(AddYearNumber, "Year", each Text.From([YearNumber]), type text),
+		        AddQuarter      = Table.AddColumn(AddYearText, "QuarterOfYear", each Date.QuarterOfYear([Date]), Int64.Type),
+		        AddMonthNumber  = Table.AddColumn(AddQuarter, "MonthOfYear", each Date.Month([Date]), Int64.Type),
+		        AddDay          = Table.AddColumn(AddMonthNumber, "DayOfMonth", each Date.Day([Date]), Int64.Type),
+		
+		        // --- Common display fields ---
+		        AddDateInt = Table.AddColumn(
+		            AddDay,
+		            "DateInt",
+		            each [YearNumber] * 10000 + [MonthOfYear] * 100 + [DayOfMonth],
+		            Int64.Type
+		        ),
+		
+		        AddMonthName = Table.AddColumn(AddDateInt, "MonthName", each Date.ToText([Date], "MMMM"), type text),
+		
+		        AddMonthInCalendar = Table.AddColumn(
+		            AddMonthName,
+		            "MonthInCalendar",
+		            each Text.Start([MonthName], 3) & " " & Text.From([YearNumber]),
+		            type text
+		        ),
+		
+		        AddQuarterInCalendar = Table.AddColumn(
+		            AddMonthInCalendar,
+		            "QuarterInCalendar",
+		            each "Q" & Text.From([QuarterOfYear]) & " " & Text.From([YearNumber]),
+		            type text
+		        ),
+		
+		        AddDayInWeek = Table.AddColumn(AddQuarterInCalendar, "DayInWeek", each Date.DayOfWeek([Date]), Int64.Type),
+		        AddDayName   = Table.AddColumn(AddDayInWeek, "DayOfWeekName", each Date.ToText([Date], "dddd"), type text),
+		        AddWeekEnding = Table.AddColumn(AddDayName, "WeekEnding", each Date.EndOfWeek([Date]), type date),
+		        AddWeekNumber = Table.AddColumn(AddWeekEnding, "Week Number", each Date.WeekOfYear([Date]), Int64.Type),
+		
+		        AddMonthnYear = Table.AddColumn(
+		            AddWeekNumber,
+		            "MonthnYear",
+		            each [YearNumber] * 10000 + [MonthOfYear] * 100,
+		            Int64.Type
+		        ),
+		
+		        AddQuarternYear = Table.AddColumn(
+		            AddMonthnYear,
+		            "QuarternYear",
+		            each [YearNumber] * 10000 + [QuarterOfYear] * 100,
+		            Int64.Type
+		        ),
+		
+		        // --- FY logic (based on user-entered FY start month) ---
+		        AddShortYear = Table.AddColumn(AddQuarternYear, "ShortYear", each Text.End(Text.From([YearNumber]), 2), type text),
+		
+		        AddFY = Table.AddColumn(
+		            AddShortYear,
+		            "FY",
+		            each
+		                let
+		                    yy = Number.FromText([ShortYear]),
+		                    fyYear = if [MonthOfYear] >= _FYStartMonth then yy + 1 else yy
+		                in
+		                    "FY" & Text.PadStart(Text.From(fyYear), 2, "0"),
+		            type text
+		        )
+		    in
+		        AddFY
+		in
+		    fnDateTable
+	lineageTag: 6dc6efbb-bf9d-4408-a64e-12e277aee2b7
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

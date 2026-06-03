@@ -1,0 +1,227 @@
+table Date
+	lineageTag: 914ed65b-fc40-4b8f-af5d-c9ae143f7800
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: c1144109-9f9d-4d6e-bf09-21ff2a0e58b8
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column YearNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: c6428094-6571-4fd9-b416-ffba438b9ffa
+		summarizeBy: none
+		sourceColumn: YearNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: ab2f2eae-10a8-4c1d-a061-2c4bf89bc91f
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: bbe03d5c-a55b-4d33-82f3-9c9f77490842
+		summarizeBy: none
+		sourceColumn: QuarterOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: f476ee6a-bade-4427-919b-1658da2a04c4
+		summarizeBy: none
+		sourceColumn: MonthOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 007c1f0e-344c-4066-912f-61bd494f9fee
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateInt
+		dataType: int64
+		formatString: 0
+		lineageTag: b23c2e02-af53-4f6c-8484-101787009dea
+		summarizeBy: none
+		sourceColumn: DateInt
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 6608c415-37c2-4c3f-8c6a-cb6457854836
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthOfYear
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthInCalendar
+		dataType: string
+		lineageTag: 3f6b423d-85ae-4090-adb7-a0e7516508a2
+		summarizeBy: none
+		sourceColumn: MonthInCalendar
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterInCalendar
+		dataType: string
+		lineageTag: b94e1e27-ac19-4526-a346-779e9e49b4cc
+		summarizeBy: none
+		sourceColumn: QuarterInCalendar
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayInWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: c240630c-b447-4d13-93f5-1ff2f73da84a
+		summarizeBy: none
+		sourceColumn: DayInWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekName
+		dataType: string
+		lineageTag: fbfcc2ec-88ca-484b-a37a-f1d32f355e16
+		summarizeBy: none
+		sourceColumn: DayOfWeekName
+		sortByColumn: DayInWeek
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekEnding
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a708fbf5-cef4-49d6-a2e2-dd3aeb16f9db
+		summarizeBy: none
+		sourceColumn: WeekEnding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd921c6b-3eb5-43f1-8b02-6feb527907c0
+		summarizeBy: none
+		sourceColumn: Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthnYear
+		dataType: int64
+		formatString: 0
+		lineageTag: eff431f2-2c90-4e89-8279-5852c0b4dd05
+		summarizeBy: none
+		sourceColumn: MonthnYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarternYear
+		dataType: int64
+		formatString: 0
+		lineageTag: dd20b35b-2bc9-4374-bdf3-caa2c72ce1c3
+		summarizeBy: none
+		sourceColumn: QuarternYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortYear
+		dataType: string
+		lineageTag: 11c809d6-a933-4757-9d2f-0ca94c9f7c2d
+		summarizeBy: none
+		sourceColumn: ShortYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY
+		dataType: string
+		lineageTag: 0c36af2f-bbb8-437e-a014-59e05f1b2ee8
+		summarizeBy: none
+		sourceColumn: FY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortMonth
+		dataType: string
+		lineageTag: a3535b01-3342-4cde-b0dd-78b215b87ef3
+		summarizeBy: none
+		sourceColumn: ShortMonth
+		sortByColumn: MonthOfYear
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: 06032782-a13b-4bac-94de-20ac6d449d45
+		summarizeBy: none
+		sourceColumn: Quarter
+		sortByColumn: Year
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: 90ef017f-35ab-410d-8640-bc8eb59e95da
+
+		level Year
+			lineageTag: 75e29c95-0427-44b5-ad48-89c9fed313ff
+			column: Year
+
+		level Quarter
+			lineageTag: c38c061e-f7e9-4c9f-99fa-5857d6dce779
+			column: Quarter
+
+		level ShortMonth
+			lineageTag: a8143fdf-cf2d-4385-bc8a-f1eb1c5d7dc9
+			column: ShortMonth
+
+		level Date
+			lineageTag: 076d5e32-29c5-444a-94f1-05e232ba20d6
+			column: Date
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = Query1(1),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(Source, "Text Before Delimiter", each Text.BeforeDelimiter([MonthInCalendar], " "), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "ShortMonth"}}),
+				    #"Inserted Text Before Delimiter1" = Table.AddColumn(#"Renamed Columns", "Quarter", each Text.BeforeDelimiter([QuarterInCalendar], " "), type text),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Text Before Delimiter1",{{"Quarter", "Quarter"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

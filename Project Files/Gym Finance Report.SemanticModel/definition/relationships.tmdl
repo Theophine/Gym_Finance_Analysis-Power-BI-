@@ -1,0 +1,4 @@
+relationship c34efba8-6a6b-5f98-294f-d7e24e3c1251
+	fromColumn: revenue_expense.Date
+	toColumn: Date.Date
+

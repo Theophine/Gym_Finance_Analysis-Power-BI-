@@ -1,0 +1,34 @@
+table dictionary
+	lineageTag: 1833c6ce-a8ec-4af1-8446-710db647a114
+
+	column Year
+		dataType: string
+		lineageTag: a5ea3348-c036-4b3f-8c85-f52ecb5e3051
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year of revenue/expense'
+		dataType: string
+		lineageTag: 65ac137e-ebbf-4ef0-8aca-0e733459c8d6
+		summarizeBy: none
+		sourceColumn: Year of revenue/expense
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dictionary = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\paddy\Documents\Analytics_files\Powerbi\Zefas BI and Analytics\Finance Analysis\Onyx Data - DataDNA Dataset Challenge - Business Financial Dataset - August 2024.xlsx"), null, true),
+				    dictionary_Sheet = Source{[Item="dictionary",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(dictionary_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Year", type text}, {"Year of revenue/expense", type any}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
