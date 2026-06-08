@@ -14,42 +14,77 @@ table revenue_expense
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
-	column 'Business Line'
-		dataType: string
-		lineageTag: 8774423b-b808-4005-b78b-dcdb6f37078c
-		summarizeBy: none
-		sourceColumn: Business Line
+	column Amount_
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e393ab2-e65b-405d-922d-834b25a9e6af
+		summarizeBy: sum
+		sourceColumn: Amount_
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Expense subgroup'
-		dataType: string
-		lineageTag: 7377a1c2-6788-4e0c-abeb-b776a98a0b94
-		summarizeBy: none
-		sourceColumn: Expense subgroup
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cdbb779-67e8-4e47-93b5-65f162ea1164
+		summarizeBy: sum
+		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Revenue / Expense Group'
+	column Month_name
 		dataType: string
-		lineageTag: 983d7283-919e-4999-a21a-ea5759fc8419
+		lineageTag: 15cf64b2-1aff-47f0-aa2d-403d977db726
 		summarizeBy: none
-		sourceColumn: Revenue / Expense Group
+		sourceColumn: Month_name
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Revenue or expense'
+	column Month_sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: fb703c96-c8c3-49cf-80ab-48d51fa09552
+		summarizeBy: sum
+		sourceColumn: Month_sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column Business_Line
 		dataType: string
-		lineageTag: 75178280-4c2c-4f37-8a01-0b039fb3fd23
+		lineageTag: c12e6637-4c85-4c22-a5d2-ae6cd89ffb21
 		summarizeBy: none
-		sourceColumn: Revenue or expense
+		sourceColumn: Business_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expense_subgroup
+		dataType: string
+		lineageTag: 38e41957-9630-4ff3-83ac-f18892fd67a5
+		summarizeBy: none
+		sourceColumn: Expense_subgroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue_Expense_Group
+		dataType: string
+		lineageTag: 8ed05b22-f169-4bba-afae-0a3a24005c26
+		summarizeBy: none
+		sourceColumn: Revenue_Expense_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Revenue_or_expense
+		dataType: string
+		lineageTag: 11a489b2-5164-4bf6-a81f-48f455b1a973
+		summarizeBy: none
+		sourceColumn: Revenue_or_expense
 
 		annotation SummarizationSetBy = Automatic
 
 	column Amount
 		dataType: int64
 		formatString: 0
-		lineageTag: 0e393ab2-e65b-405d-922d-834b25a9e6af
+		lineageTag: 3daa09e7-9ea2-43ea-bb6e-537a6a4a444b
 		summarizeBy: sum
 		sourceColumn: Amount
 
@@ -59,14 +94,12 @@ table revenue_expense
 		mode: import
 		source =
 				let
-				    Source = Source_File,
-				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Year", Int64.Type}, {"Month - name", type text}, {"Month -sequence", Int64.Type}, {"Date", type date}, {"Business Line", type text}, {"Amount, $", Int64.Type}, {"Expense subgroup", type text}, {"Revenue / Expense Group", type text}, {"Revenue or expense", type text}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Year", "Month - name", "Month -sequence"}),
-				    #"Inserted Absolute Value" = Table.AddColumn(#"Removed Columns", "Amount", each Number.Abs([#"Amount, $"]), type number),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Inserted Absolute Value",{{"Amount", Int64.Type}}),
-				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"Amount, $"})
+				    Source = #"Onyx Data - Source_File",
+				    #"Inserted Absolute Value1" = Table.AddColumn(Source, "Absolute Value", each Number.Abs([Amount])),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Inserted Absolute Value1",{{"Amount", Int64.Type}, {"Absolute Value", Int64.Type}, {"Year", Int64.Type}, {"Month_sequence", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Amount", "Amount_"}, {"Absolute Value", "Amount"}})
 				in
-				    #"Removed Columns1"
+				    #"Renamed Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 

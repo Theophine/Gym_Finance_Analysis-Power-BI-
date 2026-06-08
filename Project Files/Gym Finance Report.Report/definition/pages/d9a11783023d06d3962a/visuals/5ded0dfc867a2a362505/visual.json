@@ -23,11 +23,11 @@
                       "Entity": "revenue_expense"
                     }
                   },
-                  "Property": "Business Line"
+                  "Property": "Business_Line"
                 }
               },
-              "queryRef": "revenue_expense.Business Line",
-              "nativeQueryRef": "Business Line",
+              "queryRef": "revenue_expense.Business_Line",
+              "nativeQueryRef": "Business_Line",
               "active": true
             }
           ]
@@ -136,22 +136,6 @@
                 }
               }
             }
-          }
-        }
-      ],
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "302.43352975200355D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "revenue_expense.Business Line"
           }
         }
       ]

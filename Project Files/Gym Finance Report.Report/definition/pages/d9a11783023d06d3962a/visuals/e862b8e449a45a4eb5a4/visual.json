@@ -42,11 +42,11 @@
                       "Entity": "revenue_expense"
                     }
                   },
-                  "Property": "Business Line"
+                  "Property": "Business_Line"
                 }
               },
-              "queryRef": "revenue_expense.Business Line",
-              "nativeQueryRef": "Business Line",
+              "queryRef": "revenue_expense.Business_Line",
+              "nativeQueryRef": "Business_Line",
               "active": true
             },
             {
@@ -57,13 +57,12 @@
                       "Entity": "revenue_expense"
                     }
                   },
-                  "Property": "Revenue / Expense Group"
+                  "Property": "Revenue_Expense_Group"
                 }
               },
-              "queryRef": "revenue_expense.Revenue / Expense Group",
-              "nativeQueryRef": "Revenue Group",
-              "active": true,
-              "displayName": "Revenue Group"
+              "queryRef": "revenue_expense.Revenue_Expense_Group",
+              "nativeQueryRef": "Revenue_Expense_Group",
+              "active": false
             }
           ]
         },
@@ -95,65 +94,19 @@
         "levels": [
           {
             "queryRefs": [
-              "revenue_expense.Business Line"
+              "revenue_expense.Business_Line"
             ],
             "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "revenue_expense"
-                    }
-                  },
-                  "Property": "Business Line"
-                }
-              }
-            ],
             "isPinned": true
           },
           {
             "queryRefs": [
-              "revenue_expense.Revenue / Expense Group"
+              "revenue_expense.Revenue_Expense_Group"
             ],
-            "isCollapsed": true,
-            "isPinned": true
+            "isCollapsed": true
           }
         ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Nutrition and Food Supplements '"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Sports equipment'"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'Sportswear'"
-                  }
-                }
-              ],
-              "isToggled": true
-            }
-          ]
-        }
+        "root": {}
       }
     ],
     "objects": {
@@ -196,22 +149,6 @@
           }
         }
       ],
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "168.10216893183207D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "revenue_expense.Business Line"
-          }
-        }
-      ],
       "columnHeaders": [
         {
           "properties": {
@@ -242,20 +179,6 @@
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "levelSubtotalLabel": {
-              "expr": {
-                "Literal": {
-                  "Value": "'YTD'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "revenue_expense.Business Line"
           }
         },
         {

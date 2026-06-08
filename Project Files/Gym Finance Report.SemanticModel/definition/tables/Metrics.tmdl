@@ -1,17 +1,17 @@
 table Metrics
 	lineageTag: 2fa390a0-df15-46bc-80ca-0cb0eca296c0
 
-	measure TotalAmount = SUM(revenue_expense[Amount])
+	measure TotalAmount = SUM(revenue_expense[Amount_])
 		formatString: 0
 		displayFolder: General Metrics
 		lineageTag: 1b723d0a-b5c6-49fd-8b55-a4aeba2b1937
 
-	measure TotalRevenue = CALCULATE([TotalAmount], revenue_expense[Revenue or expense] = "Revenue")
+	measure TotalRevenue = CALCULATE([TotalAmount], revenue_expense[Revenue_or_expense] = "Revenue")
 		formatString: 0.00
 		displayFolder: Revenue
 		lineageTag: 3c5c0a8b-2984-4495-b9fc-0652d3725edf
 
-	measure TotalExpense = CALCULATE([TotalAmount], revenue_expense[Revenue or expense] = "Expense")
+	measure TotalExpense = CALCULATE([TotalAmount], revenue_expense[Revenue_or_expense] = "Expense")
 		formatString: 0.00
 		displayFolder: Expense
 		lineageTag: dcd70a54-2901-461a-a282-bb763fa141e4
@@ -83,7 +83,7 @@ table Metrics
 		displayFolder: Expense
 		lineageTag: 6a88c968-2fe8-4a1e-87ec-1ab207033cda
 
-	measure COGS = CALCULATE([TotalAmount], revenue_expense[Revenue / Expense Group] = "COGS")
+	measure COGS = CALCULATE([TotalAmount], revenue_expense[Revenue_Expense_Group] = "COGS")
 		formatString: 0
 		displayFolder: General Metrics
 		lineageTag: 5356084a-1efa-4860-be3e-421aa2ce1067
@@ -195,7 +195,7 @@ table Metrics
 		displayFolder: Revenue
 		lineageTag: 12f880fc-cbea-4ac6-90ed-0700898c5238
 
-	measure OPEX = CALCULATE([TotalAmount], revenue_expense[Revenue / Expense Group] = "Opex")
+	measure OPEX = CALCULATE([TotalAmount], revenue_expense[Revenue_Expense_Group] = "Opex")
 		formatString: 0
 		displayFolder: OPEX
 		lineageTag: 05d840f9-2817-49ea-86ae-6f577338b2c8
@@ -217,7 +217,7 @@ table Metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Int & Tax' = CALCULATE([TotalAmount], revenue_expense[Revenue / Expense Group] = "Interest and tax")
+	measure 'Int & Tax' = CALCULATE([TotalAmount], revenue_expense[Revenue_Expense_Group] = "Interest and tax")
 		formatString: 0
 		displayFolder: General Metrics
 		lineageTag: f251cd91-4e6f-4f6b-b76c-1bdecd00c423

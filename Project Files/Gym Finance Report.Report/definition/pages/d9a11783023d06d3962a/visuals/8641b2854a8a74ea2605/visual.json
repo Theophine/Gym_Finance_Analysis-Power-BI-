@@ -23,11 +23,11 @@
                       "Entity": "revenue_expense"
                     }
                   },
-                  "Property": "Revenue / Expense Group"
+                  "Property": "Revenue_Expense_Group"
                 }
               },
-              "queryRef": "revenue_expense.Revenue / Expense Group",
-              "nativeQueryRef": "Revenue / Expense Group",
+              "queryRef": "revenue_expense.Revenue_Expense_Group",
+              "nativeQueryRef": "Revenue_Expense_Group",
               "active": true
             }
           ]
@@ -50,23 +50,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "revenue_expense"
-                  }
-                },
-                "Property": "Revenue / Expense Group"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {
@@ -153,22 +136,6 @@
                 }
               }
             }
-          }
-        }
-      ],
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "286.1822641703108D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "revenue_expense.Revenue / Expense Group"
           }
         }
       ]

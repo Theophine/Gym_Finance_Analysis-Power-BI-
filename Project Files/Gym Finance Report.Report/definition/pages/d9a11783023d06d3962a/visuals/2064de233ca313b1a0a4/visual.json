@@ -23,11 +23,11 @@
                       "Entity": "revenue_expense"
                     }
                   },
-                  "Property": "Expense subgroup"
+                  "Property": "Expense_subgroup"
                 }
               },
-              "queryRef": "revenue_expense.Expense subgroup",
-              "nativeQueryRef": "Expense subgroup",
+              "queryRef": "revenue_expense.Expense_subgroup",
+              "nativeQueryRef": "Expense_subgroup",
               "active": true
             }
           ]
