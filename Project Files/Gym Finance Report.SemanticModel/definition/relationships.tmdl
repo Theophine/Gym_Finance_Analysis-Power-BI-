@@ -2,7 +2,3 @@ relationship c34efba8-6a6b-5f98-294f-d7e24e3c1251
 	fromColumn: revenue_expense.Date
 	toColumn: Date.Date
 
-relationship 93ee96ef-ab20-6366-27bb-402e795a6978
-	fromColumn: 'Onyx Data - Source_File_'.Date
-	toColumn: Date.Date
-

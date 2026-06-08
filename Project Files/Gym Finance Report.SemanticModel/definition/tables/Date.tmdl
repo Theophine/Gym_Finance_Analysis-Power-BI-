@@ -18,7 +18,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: c6428094-6571-4fd9-b416-ffba438b9ffa
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: YearNumber
 
 		annotation SummarizationSetBy = Automatic
@@ -35,7 +35,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: bbe03d5c-a55b-4d33-82f3-9c9f77490842
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: QuarterOfYear
 
 		annotation SummarizationSetBy = Automatic
@@ -44,7 +44,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: f476ee6a-bade-4427-919b-1658da2a04c4
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MonthOfYear
 
 		annotation SummarizationSetBy = Automatic
@@ -53,7 +53,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: 007c1f0e-344c-4066-912f-61bd494f9fee
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DayOfMonth
 
 		annotation SummarizationSetBy = Automatic
@@ -62,7 +62,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: b23c2e02-af53-4f6c-8484-101787009dea
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DateInt
 
 		annotation SummarizationSetBy = Automatic
@@ -98,7 +98,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: c240630c-b447-4d13-93f5-1ff2f73da84a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DayInWeek
 
 		annotation SummarizationSetBy = Automatic
@@ -129,7 +129,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: bd921c6b-3eb5-43f1-8b02-6feb527907c0
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Week Number
 
 		annotation SummarizationSetBy = Automatic
@@ -138,7 +138,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: eff431f2-2c90-4e89-8279-5852c0b4dd05
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MonthnYear
 
 		annotation SummarizationSetBy = Automatic
@@ -147,7 +147,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: dd20b35b-2bc9-4374-bdf3-caa2c72ce1c3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: QuarternYear
 
 		annotation SummarizationSetBy = Automatic

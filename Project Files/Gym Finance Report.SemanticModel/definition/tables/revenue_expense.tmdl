@@ -94,8 +94,9 @@ table revenue_expense
 		mode: import
 		source =
 				let
-				    Source = #"Onyx Data - Source_File_",
-				    #"Inserted Absolute Value1" = Table.AddColumn(Source, "Absolute Value", each Number.Abs([Amount])),
+				    Source = Sql.Database("TOCHUKWU\SQLEXPRESS", "Gym_Finance_Database"),
+				    dbo_Gym_Finance_Database_Table = Source{[Schema="dbo",Item=Gym_finance_table_names]}[Data],
+				    #"Inserted Absolute Value1" = Table.AddColumn(dbo_Gym_Finance_Database_Table, "Absolute Value", each Number.Abs([Amount]), Int64.Type),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Inserted Absolute Value1",{{"Amount", Int64.Type}, {"Absolute Value", Int64.Type}, {"Year", Int64.Type}, {"Month_sequence", Int64.Type}}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Amount", "Amount_"}, {"Absolute Value", "Amount"}})
 				in
