@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["revenue_expense","Query1","Date","Metrics","Onyx Data - Source_File"]
+annotation PBI_QueryOrder = ["revenue_expense","Query1","Date","Metrics","Onyx Data - Source_File","Gym_finance_table_names"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

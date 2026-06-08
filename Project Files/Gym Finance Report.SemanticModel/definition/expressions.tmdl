@@ -102,7 +102,7 @@ expression Query1 =
 expression 'Onyx Data - Source_File' =
 		let
 		    Source = Sql.Database("TOCHUKWU\SQLEXPRESS", "Gym_Finance_Database"),
-		    dbo_Gym_Finance_Database_Table = Source{[Schema="dbo",Item="Gym_Finance_Database_Table"]}[Data]
+		    dbo_Gym_Finance_Database_Table = Source{[Schema="dbo",Item=Gym_finance_table_names]}[Data]
 		in
 		    dbo_Gym_Finance_Database_Table
 	lineageTag: ab0229dc-431f-4101-9e08-9e97c155df1c
@@ -110,4 +110,11 @@ expression 'Onyx Data - Source_File' =
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
+expression Gym_finance_table_names = "Gym_Finance_Database_Table" meta [IsParameterQuery=true, List={"Gym_Finance_Database_Table", "Gym_Finance_DB_Test", "Gym_test"}, DefaultValue="Gym_Finance_Database_Table", Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 70586719-4bf7-4607-89d6-274a9e23719d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
 
