@@ -1,4 +1,4 @@
-table 'Onyx Data - Source_File'
+table 'Onyx Data - Source_File_'
 	lineageTag: 22e1b987-44d7-45b9-900d-31dd0a3c1a46
 
 	column Year
@@ -79,7 +79,7 @@ table 'Onyx Data - Source_File'
 
 		annotation SummarizationSetBy = Automatic
 
-	partition 'Onyx Data - Source_File' = m
+	partition 'Onyx Data - Source_File_' = m
 		mode: import
 		source =
 				let

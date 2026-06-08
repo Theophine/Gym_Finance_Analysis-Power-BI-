@@ -8,14 +8,14 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["revenue_expense","Query1","Date","Metrics","Onyx Data - Source_File","Gym_finance_table_names"]
+annotation PBI_QueryOrder = ["revenue_expense","Query1","Date","Metrics","Onyx Data - Source_File_","Gym_finance_table_names"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table revenue_expense
 ref table Date
 ref table Metrics
-ref table 'Onyx Data - Source_File'
+ref table 'Onyx Data - Source_File_'
 
 ref cultureInfo en-GB
 

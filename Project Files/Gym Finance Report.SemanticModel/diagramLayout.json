@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 308.79998779296875,
-        "y": 0
+        "x": 0,
+        "y": 95.199996948242188
       },
       "nodes": [
         {
@@ -19,20 +19,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 745,
-            "y": 20
-          },
-          "nodeIndex": "dictionary",
-          "nodeLineageTag": "1833c6ce-a8ec-4af1-8446-710db647a114",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
@@ -45,7 +32,7 @@
             "height": 248,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         },
         {
           "location": {
@@ -58,20 +45,20 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 1252,
-            "y": 165.5
+            "x": 522.39999389648438,
+            "y": 33.5
           },
-          "nodeIndex": "Source_File",
-          "nodeLineageTag": "f1307e19-64b2-467b-9c1e-74a096e9f478",
+          "nodeIndex": "Onyx Data - Source_File_",
+          "nodeLineageTag": "22e1b987-44d7-45b9-900d-31dd0a3c1a46",
           "size": {
             "height": 296,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         }
       ],
       "name": "All tables",
