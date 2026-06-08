@@ -13,7 +13,7 @@ table Metrics
 
 	measure TotalExpense = CALCULATE([TotalAmount], revenue_expense[Revenue_or_expense] = "Expense")
 		formatString: 0.00
-		displayFolder: Expense
+		displayFolder: Expenses
 		lineageTag: dcd70a54-2901-461a-a282-bb763fa141e4
 
 	measure Revenue_PM = CALCULATE([TotalRevenue], DATEADD('Date'[Date], -1, MONTH))
@@ -51,7 +51,7 @@ table Metrics
 
 	measure Expense_PM = CALCULATE([TotalExpense], DATEADD('Date'[Date], -1, MONTH))
 		formatString: 0.00
-		displayFolder: Expense
+		displayFolder: Expenses
 		lineageTag: 8e97d25a-8896-4bdc-a7bf-96876affb97e
 
 	measure Expense_MoM = ```
@@ -67,7 +67,7 @@ table Metrics
 			) 
 			
 			```
-		displayFolder: Expense
+		displayFolder: Expenses
 		lineageTag: 71c6d682-8002-425b-bfc9-2f3604ed179d
 
 	measure Expense_CF = ```
@@ -80,7 +80,7 @@ table Metrics
 			        if(Result < 0, "Green", "Red")
 			
 			```
-		displayFolder: Expense
+		displayFolder: Expenses
 		lineageTag: 6a88c968-2fe8-4a1e-87ec-1ab207033cda
 
 	measure COGS = CALCULATE([TotalAmount], revenue_expense[Revenue_Expense_Group] = "COGS")
@@ -187,7 +187,7 @@ table Metrics
 
 	measure 'Target Expense' = 250000
 		formatString: 0
-		displayFolder: Expense
+		displayFolder: Expenses
 		lineageTag: df167d80-2de0-46ed-aa3c-649093a39584
 
 	measure TargetRevenue = 400000
