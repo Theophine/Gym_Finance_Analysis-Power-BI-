@@ -102,9 +102,9 @@ expression Query1 =
 expression 'Onyx Data - Source_File' =
 		let
 		    Source = Sql.Database("TOCHUKWU\SQLEXPRESS", "Gym_Finance_Database"),
-		    #"dbo_Onyx Data - DataDNA Dataset Challenge - Business Financial Dataset - August 2024" = Source{[Schema="dbo",Item="Onyx Data - DataDNA Dataset Challenge - Business Financial Dataset - August 2024"]}[Data]
+		    dbo_Gym_Finance_Database_Table = Source{[Schema="dbo",Item="Gym_Finance_Database_Table"]}[Data]
 		in
-		    #"dbo_Onyx Data - DataDNA Dataset Challenge - Business Financial Dataset - August 2024"
+		    dbo_Gym_Finance_Database_Table
 	lineageTag: ab0229dc-431f-4101-9e08-9e97c155df1c
 
 	annotation PBI_NavigationStepName = Navigation
