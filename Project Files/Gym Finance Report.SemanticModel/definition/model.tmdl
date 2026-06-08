@@ -15,6 +15,7 @@ annotation PBI_ProTooling = ["DevMode"]
 ref table revenue_expense
 ref table Date
 ref table Metrics
+ref table 'Onyx Data - Source_File'
 
 ref cultureInfo en-GB
 
